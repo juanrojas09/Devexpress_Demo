@@ -1,0 +1,56 @@
+﻿@page
+@model DevExtremeAspNetCoreApp3.Pages.SelectDatesModel
+@{
+}
+<hr />
+<h1 class="titulo">Buscar Reporte por fecha</h1>
+
+
+<!-- Agrega el modal como un div oculto en la página -->
+<div id="miModal" style="display:none;">
+    <form>
+        <label for="fechaInicio">Fecha de inicio:</label>
+        <input type="date" id="fechaInicio" name="startDate1"><br><br>
+        <label for="fechaFin">Fecha de fin:</label>
+        <input type="date" id="fechaFin" name="endDate1"><br><br>
+        <button type="submit" asp-controller="PayView" asp-action="PayView2">Generar reporte</button>
+    </form>
+</div>
+
+<!-- Agrega el botón para abrir el modal -->
+<button id="abrirModal" class="btn btn-primary">Abrir formulario</button>
+<button id="CerrarModal" class="btn btn-primary">Cerrar formulario</button>
+<hr />
+<!-- Agrega el código Javascript para manejar el modal -->
+<script>
+    // Obtén el botón y el modal
+    var boton = document.getElementById("abrirModal");
+    var botonCerrar=document.getElementById("CerrarModal")
+    var modal = document.getElementById("miModal");
+    
+    // Cuando se hace clic en el botón, muestra el modal
+    boton.onclick = function () {
+        modal.style.display = "block";
+        botonCerrar.style.display="block"
+        boton.style.display="none"
+    }
+
+    // Cuando se hace click fuera del modal, cerrar
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    if(modal.style.display="none"){
+        botonCerrar.style.display="none"
+        botonCerrar.onclick = function () {
+            modal.style.display="none"
+            botonCerrar.style.display = "none"
+            boton.style.display="block"
+        }
+    }
+
+
+
+</script>
